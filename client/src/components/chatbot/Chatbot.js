@@ -33,72 +33,40 @@ class Chatbot extends Component {
         }
     }
 
-    async df_text_query(text) {
+    async df_text_query (queryText) {
         let says = {
             speaks: 'user',
             msg: {
-                text: {
-                    text: text
+                text : {
+                    text: queryText
                 }
             }
         }
-        this.setState({ messages: [...this.state.messages, says] });
-        try {
-            const res = await axios.post('/api/df_text_query', { text, userID: cookies.get('userID') });
+        this.setState({ messages: [...this.state.messages, says]});
+        const res = await axios.post('/api/df_text_query',  {text: queryText, userID: cookies.get('userID')});
 
-            for (let msg of res.data.fulfillmentMessages) {
-                says = {
-                    speaks: 'bot',
-                    msg: msg
-                }
-                this.setState({ messages: [...this.state.messages, says] });
-            }
-        } catch (e) {
+        for (let msg of res.data.fulfillmentMessages) {
             says = {
                 speaks: 'bot',
-                msg: {
-                    text: "I'm having troubles. I need to terminate"
-                }
+                msg: msg
             }
-
+            this.setState({ messages: [...this.state.messages, says]});
         }
-        this.setState({ messages: [...this.state.messages, says] });
-        let that = this;
-        setTimeout(function () {
-            that.setState({ showbot: false })
-        }, 2000);
-
-
     };
 
 
-    async df_event_query(event) {
+    async df_event_query(eventName) {
 
-        try {
-            const res = await axios.post('/api/df_event_query', { event, userID: cookies.get('userID') });
+        const res = await axios.post('/api/df_event_query',  {event: eventName, userID: cookies.get('userID')});
 
-            for (let msg of res.data.fulfillmentMessages) {
-                let says = {
-                    speaks: 'bot',
-                    msg: msg
-                }
-
-                this.setState({ messages: [...this.state.messages, says] });
-            }
-        } catch (e) {
-            says = {
+        for (let msg of res.data.fulfillmentMessages) {
+            let says = {
                 speaks: 'bot',
-                msg: {
-                    text: "I'm having troubles. I need to terminate"
-                }
+                msg: msg
             }
 
+            this.setState({ messages: [...this.state.messages, says]});
         }
-        this.setState({ messages: [...this.state.messages, says] });
-        let that = this;
-        setTimeout(function () {
-            that.setState({ showbot: false })
-        }, 2000);
     };
 
     resolveAfterXSeconds(x) {
@@ -128,7 +96,7 @@ class Chatbot extends Component {
 
     componentDidUpdate() {
         this.messagesEnd.scrollIntoView({ behavior: "smooth" });
-        if (this.talkInput) {
+        if ( this.talkInput ) {
             this.talkInput.focus();
         }
     }
@@ -136,16 +104,16 @@ class Chatbot extends Component {
     hide(event) {
         event.preventDefault();
         event.stopPropagation();
-        this.setState({ showBot: false });
+        this.setState({showBot: false});
     }
 
     show(event) {
         event.preventDefault();
         event.stopPropagation();
-        this.setState({ showBot: true });
+        this.setState({showBot: true});
     }
 
-
+    
 
     _handleQuickReplyPayload(event, payload, text) {
         event.preventDefault();
@@ -165,23 +133,23 @@ class Chatbot extends Component {
     }
 
     renderCards(cards) {
-        return cards.map((card, i) => <Card key={i} payload={card.structValue} />);
+        return cards.map((card, i) => <Card key={i} payload={card.structValue}/>);
     }
 
     renderOneMessage(message, i) {
 
         if (message.msg && message.msg.text && message.msg.text.text) {
-            return <Message key={i} speaks={message.speaks} text={message.msg.text.text} />;
+            return <Message key={i} speaks={message.speaks} text={message.msg.text.text}/>;
         } else if (message.msg && message.msg.payload.fields.cards) { //message.msg.payload.fields.cards.listValue.values
 
             return <div key={i}>
                 <div className="card-panel grey lighten-5 z-depth-1">
-                    <div style={{ overflow: 'hidden' }}>
+                    <div style={{overflow: 'hidden'}}>
                         <div className="col s2">
                             <a href="/" className="btn-floating btn-large waves-effect waves-light red">{message.speaks}</a>
                         </div>
-                        <div style={{ overflow: 'auto', overflowY: 'scroll' }}>
-                            <div style={{ height: 300, width: message.msg.payload.fields.cards.listValue.values.length * 270 }}>
+                        <div style={{ overflow: 'auto', overflowY: 'scroll'}}>
+                            <div style={{ height: 300, width:message.msg.payload.fields.cards.listValue.values.length * 270}}>
                                 {this.renderCards(message.msg.payload.fields.cards.listValue.values)}
                             </div>
                         </div>
@@ -198,15 +166,15 @@ class Chatbot extends Component {
                 key={i}
                 replyClick={this._handleQuickReplyPayload}
                 speaks={message.speaks}
-                payload={message.msg.payload.fields.quick_replies.listValue.values} />;
+                payload={message.msg.payload.fields.quick_replies.listValue.values}/>;
         }
     }
 
     renderMessages(returnedMessages) {
         if (returnedMessages) {
             return returnedMessages.map((message, i) => {
-                return this.renderOneMessage(message, i);
-            }
+                    return this.renderOneMessage(message, i);
+                }
             )
         } else {
             return null;
@@ -223,7 +191,7 @@ class Chatbot extends Component {
     render() {
         if (this.state.showBot) {
             return (
-                <div style={{ minHeight: 600, maxHeight: 600, width: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgray' }}>
+                <div style={{ minHeight: 600, maxHeight: 600, width:400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgray'}}>
                     <nav>
                         <div className="nav-wrapper">
                             <a href="/" className="brand-logo">ChatBot</a>
@@ -233,22 +201,22 @@ class Chatbot extends Component {
                         </div>
                     </nav>
 
-                    <div id="chatbot" style={{ minHeight: 488, maxHeight: 488, width: '100%', overflow: 'auto' }}>
+                    <div id="chatbot"  style={{ minHeight: 488, maxHeight: 488, width:'100%', overflow: 'auto'}}>
 
                         {this.renderMessages(this.state.messages)}
                         <div ref={(el) => { this.messagesEnd = el; }}
-                            style={{ float: "left", clear: "both" }}>
+                             style={{ float:"left", clear: "both" }}>
                         </div>
                     </div>
                     <div className=" col s12" >
-                        <input style={{ margin: 0, paddingLeft: '1%', paddingRight: '1%', width: '98%' }} ref={(input) => { this.talkInput = input; }} placeholder="type a message:" onKeyPress={this._handleInputKeyPress} id="user_says" type="text" />
+                        <input style={{margin: 0, paddingLeft: '1%', paddingRight: '1%', width: '98%'}} ref={(input) => { this.talkInput = input; }} placeholder="type a message:"  onKeyPress={this._handleInputKeyPress} id="user_says" type="text" />
                     </div>
 
                 </div>
             );
         } else {
             return (
-                <div style={{ minHeight: 40, maxHeight: 500, width: 400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgray' }}>
+                <div style={{ minHeight: 40, maxHeight: 500, width:400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgray'}}>
                     <nav>
                         <div className="nav-wrapper">
                             <a href="/" className="brand-logo">ChatBot</a>
@@ -258,7 +226,7 @@ class Chatbot extends Component {
                         </div>
                     </nav>
                     <div ref={(el) => { this.messagesEnd = el; }}
-                        style={{ float: "left", clear: "both" }}>
+                         style={{ float:"left", clear: "both" }}>
                     </div>
                 </div>
             );
