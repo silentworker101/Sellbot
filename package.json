@@ -9,17 +9,25 @@
   },
   "scripts": {
     "start": "node index.js",
-    "backend": "nodemon index.js"
+    "backend": "nodemon index.js",
+    "frontend": "npm run start --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "actions-on-google": "^2.14.0",
     "body-parser": "^1.19.0",
     "dialogflow": "^1.2.0",
-    "express": "^4.17.1"
+    "dialogflow-fulfillment": "^0.6.1",
+    "express": "^4.17.1",
+    "google-oauth-jwt": "^0.2.0",
+    "mongoose": "^5.13.5"
   },
   "devDependencies": {
+    "concurrently": "^6.2.0",
     "nodemon": "^2.0.12"
   }
 }

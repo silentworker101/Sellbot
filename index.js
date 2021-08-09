@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
+// app.get('/',(req,res)=>{
+//     res.send({'hello':'there'})
+// })
 
 const config = require('./config/keys');
 const mongoose = require('mongoose');
@@ -15,7 +18,6 @@ require('./models/Coupons');
 app.use(bodyParser.json());
 
 require('./routes/dialogFlowRoutes')(app);
-require('./routes/fulfillmentRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
     // js and css files
