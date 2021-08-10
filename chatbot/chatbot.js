@@ -3,6 +3,7 @@ const dialogflow = require('dialogflow');
 const structjson = require('./structjson.js');
 const config = require('../config/keys');
 const mongoose = require('mongoose');
+const googleAuth = require('google-oauth-jwt');
 
 const projectId = config.googleProjectID;
 const sessionId = config.dialogFlowSessionID;
@@ -10,21 +11,18 @@ const languageCode = config.dialogFlowSessionLanguageCode;
 
 const credentials = {
     client_email: config.googleClientEmail,
-    private_key:
-    config.googlePrivateKey,
+    private_key: config.googlePrivateKey,
 };
 
 const sessionClient = new dialogflow.SessionsClient({projectId, credentials});
 
-
-
 const Registration = mongoose.model('registration');
 
-
 module.exports = {
-    textQuery: async function(text, userID, parameters = {}) {
+    
+    textQuery: async function(text, parameters = {}) {
         let self = module.exports;
-        const sessionPath = sessionClient.sessionPath(projectId, sessionId + userID);
+        const sessionPath = sessionClient.sessionPath(projectId, sessionId);
 
         const request = {
             session: sessionPath,
@@ -49,9 +47,9 @@ module.exports = {
 
     },
 
-    eventQuery: async function(event, userID,  parameters = {}) {
+    eventQuery: async function(event, parameters = {}) {
         let self = module.exports;
-        let sessionPath = sessionClient.sessionPath(projectId, sessionId + userID);
+        let sessionPath = sessionClient.sessionPath(projectId, sessionId);
 
         const request = {
             session: sessionPath,
