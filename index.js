@@ -23,6 +23,10 @@ if (process.env.NODE_ENV === 'production') {
     // js and css files
     app.use(express.static('client/build'));
 
+    // app.get("/service-worker.js", (req, res) => {
+    //     res.sendFile(path.resolve(__dirname, "public", "service-worker.js"));
+    //   });
+
     // index.html for all page routes
     const path = require('path');
     app.get('*', (req, res) => {
