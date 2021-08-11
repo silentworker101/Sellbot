@@ -6,6 +6,9 @@ const app = express();
 //     res.send({'hello':'there'})
 // })
 
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);
+
 const config = require('./config/keys');
 const mongoose = require('mongoose');
 mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -30,5 +33,3 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT);
