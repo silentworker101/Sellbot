@@ -1,10 +1,10 @@
 # Sellbot
 
-###To run Locally : **npm run dev**
+###To run Locally### : **npm run dev**
 
-###To run Backend : **npm run backend
+###To run Backend : **npm run backend**
 
-###To run Frontend : **npm start
+###To run Frontend : **npm start**
 
 *export REACT_APP_GOOGLE_PROJECT_ID="insert google project id"
 
