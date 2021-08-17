@@ -6,9 +6,9 @@ To run Backend : **npm run backend**
 
 To run Frontend : **npm start**
 
-*export REACT_APP_GOOGLE_PROJECT_ID="insert google project id"
+*export REACT_APP_GOOGLE_PROJECT_ID="insert google project id"*
 
-*export REACT_APP_DF_SESSION_ID="insert dialogflow session"
+*export REACT_APP_DF_SESSION_ID="insert dialogflow session"*
 
 ### Add mongoURI 
 
@@ -23,7 +23,7 @@ To run Frontend : **npm start**
 >Install  dev dependencies in client folder : npm install --save-dev http-proxy-middleware
 
 ## In chatbot:
-Type recommend me some courses to view the courses offerings.If you say yes in reply, chatbot will ask you some details about you and later it will store in the database.
+Type **recommend** me some courses to view the courses offerings.If you say yes in reply, chatbot will ask you some details about you and later it will store your data in the database.
 
 
     
