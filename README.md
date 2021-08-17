@@ -30,6 +30,6 @@ To run Frontend : **npm start**
 Type **recommend** me some courses to view the courses offerings.If you say yes in reply, chatbot will ask you some details about you and later it will store your data in the database.
 
 ## Deployment link:
-[GitHub](https://celebal-chatbot.herokuapp.com/)
+[Sellbot Chatbot Heroku App](https://celebal-chatbot.herokuapp.com/)
 
     
