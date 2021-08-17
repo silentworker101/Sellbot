@@ -12,7 +12,7 @@ export REACT_APP_DF_SESSION_ID="insert dialogflow session"
 
 Add mongoURI 
 
-Install dependencies in root folder : npm install actions-on-google body-parser dialogflow dialogflow-fulfillment express google-oauth-jwt mongoose --save
+> Install dependencies in root folder : npm install actions-on-google body-parser dialogflow dialogflow-fulfillment express google-oauth-jwt mongoose --save
 
 Install  dev dependencies in root folder : concurrently nodemon --save-dev
 
