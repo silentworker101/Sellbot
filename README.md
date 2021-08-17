@@ -33,7 +33,7 @@ To run Frontend : **npm start**
 
 Type **recommend** me some courses to view the courses offerings.If you say yes in reply, chatbot will ask you some details about you and later it will store your data in the database.
 
-![](https://github.com/silentworker101/Sellbot/blob/master/images/Image%202.png)
+![](https://github.com/silentworker101/Sellbot/blob/master/images/Image%201.png)
 
 
 ## Deployment link:
