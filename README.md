@@ -1,13 +1,19 @@
 # Sellbot
 
 To run Locally : **npm run dev**
+
 To run Backend : **npm run backend**
+
 To run Frontend : **npm start**
 
 ## Google Service Account
+
 *export REACT_APP_GOOGLE_PROJECT_ID="insert google project id"*
+
 *export REACT_APP_DF_SESSION_ID="insert dialogflow session"*
+
 **or**
+
 > Just change update the **config.dev** file with your Google Service Account details and **MongoDB** url.
 
 ## Dependencies
