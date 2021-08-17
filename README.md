@@ -1,5 +1,7 @@
 # Sellbot
 
+![Sellbot](https://github.com/silentworker101/Sellbot/blob/master/Image%202.png)
+
 To run Locally : **npm run dev**
 
 To run Backend : **npm run backend**
