@@ -20,7 +20,7 @@ Install dependencies in client folder : npm install --save axios materialize-css
 
 Install  dev dependencies in client folder : npm install --save-dev http-proxy-middleware
 
-In chatbot:
+## In chatbot:
 Type recommend me some courses to view the courses offerings.If you say yes in reply, chatbot will ask you some details about you and later it will store in the database.
 
 
