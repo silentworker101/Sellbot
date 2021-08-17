@@ -14,7 +14,7 @@ To run Frontend : **npm start**
 
 **or**
 
-> Just change update the **config.dev** file with your Google Service Account details and **MongoDB** url.
+> Just update the **config.dev** file with your Google Service Account details and **MongoDB** url.
 
 ## Dependencies
 
