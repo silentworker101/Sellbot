@@ -1,6 +1,6 @@
 # Sellbot
 
-![Sellbot](https://github.com/silentworker101/Sellbot/blob/master/Image%202.png)
+![Sellbot](https://github.com/silentworker101/Sellbot/blob/master/images/Image%202.png)
 
 To run Locally : **npm run dev**
 
